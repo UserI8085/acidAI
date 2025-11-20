@@ -1,0 +1,5 @@
+{
+  "name": "AcidGen 303",
+  "description": "A browser-based Roland TB-303 style synthesizer with AI pattern generation. Features a realistic audio engine with cutoff, resonance, distortion, and a step sequencer.",
+  "requestFramePermissions": []
+}
