@@ -143,10 +143,10 @@ const Knob: React.FC<KnobProps> = ({
             </defs>
 
             {/* Background Track */}
-            <path d={trackPath} fill="none" stroke="#3f3f46" strokeWidth="4" strokeLinecap="round" />
+            <path d={trackPath} fill="none" stroke="#3f3f46" strokeWidth="5" strokeLinecap="round" />
             
             {/* Active Value Arc */}
-            <path d={valuePath} fill="none" stroke={color} strokeWidth="4" strokeLinecap="round" opacity="0.8" />
+            <path d={valuePath} fill="none" stroke={color} strokeWidth="5" strokeLinecap="round" opacity="0.8" />
 
             {/* Knob Cap */}
             {!isEditing && (
@@ -170,7 +170,7 @@ const Knob: React.FC<KnobProps> = ({
                     onChange={(e) => setInputValue(e.target.value)}
                     onBlur={commitInput}
                     onKeyDown={handleKeyDown}
-                    className="w-full bg-zinc-900 text-white text-center font-mono font-bold text-sm border border-zinc-600 rounded outline-none shadow-lg"
+                    className="w-full bg-white text-black text-center font-mono font-bold text-sm border-2 border-zinc-600 rounded outline-none shadow-lg"
                     style={{ maxWidth: size }}
                  />
              </div>
@@ -178,14 +178,14 @@ const Knob: React.FC<KnobProps> = ({
 
          {/* Value Tooltip (visible on drag) */}
          {isDragging && !isEditing && (
-             <div className="absolute -top-8 left-1/2 -translate-x-1/2 bg-black text-white text-[10px] font-mono px-2 py-1 rounded border border-zinc-700 z-50 whitespace-nowrap">
+             <div className="absolute -top-8 left-1/2 -translate-x-1/2 bg-black text-white text-[11px] font-mono px-2 py-1 rounded border border-zinc-700 z-50 whitespace-nowrap shadow-xl">
                  {Math.round(value)}{paramDisplay}
              </div>
          )}
       </div>
       
       <div className="flex flex-col items-center -mt-1">
-        <span className="text-xs font-bold text-zinc-400 uppercase tracking-tighter leading-none">{label}</span>
+        <span className="text-[10px] font-bold text-zinc-400 uppercase tracking-tighter leading-none">{label}</span>
       </div>
     </div>
   );

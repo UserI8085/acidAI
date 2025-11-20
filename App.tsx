@@ -1,9 +1,4 @@
 
-
-
-
-
-
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { Play, Square, Sparkles, RefreshCw, Settings2, SlidersHorizontal, TableProperties, Download, Upload, Box } from 'lucide-react';
 import Knob from './components/Knob';
@@ -316,7 +311,7 @@ const App: React.FC = () => {
   const getFxKnobColor = (key: keyof EffectParams) => (key === 'distortion' ? '#ef4444' : '#3b82f6');
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center p-2 md:p-8 font-sans">
+    <div className="min-h-screen flex flex-col items-center justify-center p-4 md:p-8 font-sans">
       
       <AIModal 
         isOpen={showAIModal} 
@@ -326,8 +321,8 @@ const App: React.FC = () => {
       />
       <input type="file" ref={fileInputRef} className="hidden" accept=".json" onChange={handleFileChange} />
       
-      {/* Rack Container */}
-      <div className="w-full max-w-6xl bg-[#0a0a0a] border-4 border-[#111] rounded-lg shadow-2xl flex flex-col gap-1 relative">
+      {/* Rack Container - Widened for 1080p */}
+      <div className="w-full max-w-[1800px] bg-[#0a0a0a] border-4 border-[#111] rounded-lg shadow-2xl flex flex-col gap-1 relative">
         {/* Handles */}
         <div className="absolute -left-8 top-20 bottom-20 w-6 bg-zinc-800 rounded-l-full border-r-4 border-black shadow-lg hidden xl:block"></div>
         <div className="absolute -right-8 top-20 bottom-20 w-6 bg-zinc-800 rounded-r-full border-l-4 border-black shadow-lg hidden xl:block"></div>
@@ -346,9 +341,9 @@ const App: React.FC = () => {
             </div>
 
             {/* Transport */}
-            <div className="flex items-center gap-8 my-4 md:my-0 bg-black/30 p-2 rounded-lg border border-zinc-800">
+            <div className="flex items-center gap-8 my-4 md:my-0 bg-black/30 p-3 rounded-lg border border-zinc-800">
                  <div className="flex flex-col items-center gap-1">
-                      <Knob label="Tempo" value={activeSynth.params.tempo} min={60} max={200} onChange={(v) => handleParamChange('tempo', v)} size={45} color="#eab308" />
+                      <Knob label="Tempo" value={activeSynth.params.tempo} min={60} max={200} onChange={(v) => handleParamChange('tempo', v)} size={50} color="#eab308" />
                  </div>
                  
                  <button 
@@ -365,28 +360,28 @@ const App: React.FC = () => {
                  </button>
 
                  <div className="flex flex-col items-center gap-1">
-                      <Knob label="Master" value={masterVolume} onChange={setMasterVolume} size={45} color="#fff" />
+                      <Knob label="Master" value={masterVolume} onChange={setMasterVolume} size={50} color="#fff" />
                  </div>
             </div>
 
             {/* Tools */}
             <div className="flex gap-2">
-                 <button onClick={() => setShowTracker(true)} className="p-2 bg-zinc-800 border border-zinc-700 rounded hover:bg-zinc-700 text-zinc-400 hover:text-green-400 transition-colors" title="Tracker">
+                 <button onClick={() => setShowTracker(true)} className="p-3 bg-zinc-800 border border-zinc-700 rounded hover:bg-zinc-700 text-zinc-400 hover:text-green-400 transition-colors" title="Tracker">
                     <TableProperties size={20} />
                  </button>
-                 <button onClick={() => setShowMixer(true)} className="p-2 bg-zinc-800 border border-zinc-700 rounded hover:bg-zinc-700 text-zinc-400 hover:text-blue-400 transition-colors" title="Mixer">
+                 <button onClick={() => setShowMixer(true)} className="p-3 bg-zinc-800 border border-zinc-700 rounded hover:bg-zinc-700 text-zinc-400 hover:text-blue-400 transition-colors" title="Mixer">
                     <SlidersHorizontal size={20} />
                  </button>
-                 <button onClick={handleRandomize} className="p-2 bg-zinc-800 border border-zinc-700 rounded hover:bg-zinc-700 text-zinc-400 hover:text-yellow-400 transition-colors" title="Randomize">
+                 <button onClick={handleRandomize} className="p-3 bg-zinc-800 border border-zinc-700 rounded hover:bg-zinc-700 text-zinc-400 hover:text-yellow-400 transition-colors" title="Randomize">
                     <RefreshCw size={20} />
                  </button>
-                 <button onClick={() => setShowAIModal(true)} className="px-4 py-2 bg-gradient-to-r from-indigo-900 to-purple-900 border border-indigo-700 rounded hover:from-indigo-800 hover:to-purple-800 text-indigo-200 font-bold text-xs uppercase flex items-center gap-2 transition-all shadow-lg" title="AI Generate">
-                    <Sparkles size={16} />
+                 <button onClick={() => setShowAIModal(true)} className="px-6 py-3 bg-gradient-to-r from-indigo-900 to-purple-900 border border-indigo-700 rounded hover:from-indigo-800 hover:to-purple-800 text-indigo-200 font-bold text-xs uppercase flex items-center gap-2 transition-all shadow-lg" title="AI Generate">
+                    <Sparkles size={18} />
                     AI Gen
                  </button>
-                 <div className="w-px h-8 bg-zinc-800 mx-2"></div>
-                 <button onClick={handleSaveProject} className="p-2 bg-zinc-900 border border-zinc-800 rounded text-zinc-500 hover:text-zinc-300" title="Save"><Download size={18}/></button>
-                 <button onClick={handleLoadClick} className="p-2 bg-zinc-900 border border-zinc-800 rounded text-zinc-500 hover:text-zinc-300" title="Load"><Upload size={18}/></button>
+                 <div className="w-px h-10 bg-zinc-800 mx-2 self-center"></div>
+                 <button onClick={handleSaveProject} className="p-3 bg-zinc-900 border border-zinc-800 rounded text-zinc-500 hover:text-zinc-300" title="Save"><Download size={20}/></button>
+                 <button onClick={handleLoadClick} className="p-3 bg-zinc-900 border border-zinc-800 rounded text-zinc-500 hover:text-zinc-300" title="Load"><Upload size={20}/></button>
             </div>
         </div>
 
@@ -398,10 +393,10 @@ const App: React.FC = () => {
             <div className="absolute bottom-2 left-2 text-zinc-700 text-[10px]">⊕</div>
             <div className="absolute bottom-2 right-2 text-zinc-700 text-[10px]">⊕</div>
 
-            <div className="bg-[#18181b] m-1 rounded border border-zinc-800 p-4 flex flex-col lg:flex-row gap-8">
+            <div className="bg-[#18181b] m-1 rounded border border-zinc-800 p-4 lg:p-6 flex flex-col lg:flex-row gap-8">
                 
                 {/* Left: Control Cluster */}
-                <div className="flex-shrink-0 w-full lg:w-80 flex flex-col gap-6 border-r border-zinc-800 pr-6">
+                <div className="flex-shrink-0 w-full lg:w-96 flex flex-col gap-6 border-r border-zinc-800 pr-6">
                     {/* Selector Switch */}
                     <div className="flex bg-black rounded p-1 border border-zinc-800 shadow-inner">
                         <button 
@@ -420,30 +415,30 @@ const App: React.FC = () => {
                     </div>
 
                     {/* Filter Section */}
-                    <div className="space-y-2 relative">
-                        <h3 className="text-[11px] uppercase font-bold border-b pb-1 mb-2 text-zinc-500 border-zinc-800">
+                    <div className="space-y-3 relative">
+                        <h3 className="text-xs uppercase font-bold border-b pb-1 mb-2 text-zinc-500 border-zinc-800">
                             VCF / Envelope
                         </h3>
-                        <div className="grid grid-cols-3 gap-y-6">
-                            <Knob label="Cutoff" value={activeSynth.params.cutoff} onChange={(v) => handleParamChange('cutoff', v)} size={45} color={getKnobColor('cutoff')} />
-                            <Knob label="Resonance" value={activeSynth.params.resonance} onChange={(v) => handleParamChange('resonance', v)} size={45} color={getKnobColor('resonance')} />
-                            <Knob label="Env Mod" value={activeSynth.params.envMod} onChange={(v) => handleParamChange('envMod', v)} size={45} color={getKnobColor('envMod')} />
-                            <Knob label="Decay" value={activeSynth.params.decay} onChange={(v) => handleParamChange('decay', v)} size={45} color={getKnobColor('decay')} />
-                            <Knob label="Accent" value={activeSynth.params.accent} onChange={(v) => handleParamChange('accent', v)} size={45} color={baseColor} />
-                            <Knob label="Tune" value={activeSynth.params.tuning} min={-50} max={50} onChange={(v) => handleParamChange('tuning', v)} size={45} color={baseColor} paramDisplay="c" />
+                        <div className="grid grid-cols-3 gap-y-6 gap-x-2">
+                            <Knob label="Cutoff" value={activeSynth.params.cutoff} onChange={(v) => handleParamChange('cutoff', v)} size={50} color={getKnobColor('cutoff')} />
+                            <Knob label="Resonance" value={activeSynth.params.resonance} onChange={(v) => handleParamChange('resonance', v)} size={50} color={getKnobColor('resonance')} />
+                            <Knob label="Env Mod" value={activeSynth.params.envMod} onChange={(v) => handleParamChange('envMod', v)} size={50} color={getKnobColor('envMod')} />
+                            <Knob label="Decay" value={activeSynth.params.decay} onChange={(v) => handleParamChange('decay', v)} size={50} color={getKnobColor('decay')} />
+                            <Knob label="Accent" value={activeSynth.params.accent} onChange={(v) => handleParamChange('accent', v)} size={50} color={baseColor} />
+                            <Knob label="Tune" value={activeSynth.params.tuning} min={-50} max={50} onChange={(v) => handleParamChange('tuning', v)} size={50} color={baseColor} paramDisplay="c" />
                         </div>
                     </div>
 
                     {/* FX Section */}
-                    <div className="bg-zinc-900/50 p-3 rounded border border-zinc-800">
+                    <div className="bg-zinc-900/50 p-4 rounded border border-zinc-800">
                         <div className="flex items-center justify-between mb-3 pb-2 border-b border-zinc-800">
-                             <span className="text-[11px] font-bold uppercase text-zinc-500">Effects Chain</span>
+                             <span className="text-xs font-bold uppercase text-zinc-500">Effects Chain</span>
                         </div>
-                        <div className="grid grid-cols-2 gap-y-4 gap-x-4">
-                            <Knob label="Dist" value={activeSynth.effects.distortion} onChange={(v) => handleSynthEffectChange('distortion', v)} size={40} color={getFxKnobColor('distortion')} />
-                            <Knob label="Delay" value={activeSynth.effects.delayMix} onChange={(v) => handleSynthEffectChange('delayMix', v)} size={40} color={getFxKnobColor('delayMix')} />
-                            <Knob label="Time" value={activeSynth.effects.delayTime} onChange={(v) => handleSynthEffectChange('delayTime', v)} size={40} color="#3b82f6" />
-                            <Knob label="Fdbk" value={activeSynth.effects.delayFeedback} onChange={(v) => handleSynthEffectChange('delayFeedback', v)} size={40} color="#3b82f6" />
+                        <div className="grid grid-cols-2 gap-y-6 gap-x-4">
+                            <Knob label="Dist" value={activeSynth.effects.distortion} onChange={(v) => handleSynthEffectChange('distortion', v)} size={45} color={getFxKnobColor('distortion')} />
+                            <Knob label="Delay" value={activeSynth.effects.delayMix} onChange={(v) => handleSynthEffectChange('delayMix', v)} size={45} color={getFxKnobColor('delayMix')} />
+                            <Knob label="Time" value={activeSynth.effects.delayTime} onChange={(v) => handleSynthEffectChange('delayTime', v)} size={45} color="#3b82f6" />
+                            <Knob label="Fdbk" value={activeSynth.effects.delayFeedback} onChange={(v) => handleSynthEffectChange('delayFeedback', v)} size={45} color="#3b82f6" />
                         </div>
                     </div>
                 </div>
@@ -451,16 +446,16 @@ const App: React.FC = () => {
                 {/* Right: Sequencer & Wave */}
                 <div className="flex-1 flex flex-col gap-6">
                      {/* Waveform Selector */}
-                     <div className="flex items-center gap-4 bg-zinc-900/30 p-2 rounded border border-zinc-800">
-                          <span className="text-[11px] font-bold text-zinc-500 uppercase px-2">VCO Mode</span>
-                          <div className="flex gap-1">
+                     <div className="flex items-center justify-between bg-zinc-900/30 p-3 rounded border border-zinc-800">
+                          <span className="text-xs font-bold text-zinc-500 uppercase px-2">VCO Oscillator Mode</span>
+                          <div className="flex gap-2">
                               {(['sawtooth', 'square', 'custom'] as const).map(shape => (
                                   <button 
                                     key={shape}
                                     onClick={() => handleParamChange('waveShape', shape)}
-                                    className={`px-3 py-1 rounded text-[11px] font-bold uppercase border ${activeSynth.params.waveShape === shape ? `border-${activeSynthIndex===0?'red':'blue'}-500/50 bg-${activeSynthIndex===0?'red':'blue'}-900/20 text-white` : 'border-zinc-700 bg-zinc-800 text-zinc-500'}`}
+                                    className={`px-4 py-2 rounded text-xs font-bold uppercase border transition-all ${activeSynth.params.waveShape === shape ? `border-${activeSynthIndex===0?'red':'blue'}-500/50 bg-${activeSynthIndex===0?'red':'blue'}-900/20 text-white shadow-[0_0_10px_rgba(0,0,0,0.5)]` : 'border-zinc-700 bg-zinc-800 text-zinc-500 hover:bg-zinc-700'}`}
                                   >
-                                      {shape === 'custom' ? 'Additive' : shape.substring(0,3)}
+                                      {shape === 'custom' ? 'Additive / Custom' : shape}
                                   </button>
                               ))}
                           </div>
@@ -488,19 +483,19 @@ const App: React.FC = () => {
              <div className="absolute bottom-2 left-2 text-zinc-700 text-[10px]">⊕</div>
              <div className="absolute bottom-2 right-2 text-zinc-700 text-[10px]">⊕</div>
              
-             <div className="bg-[#18181b] m-1 rounded border border-zinc-800 p-4 flex flex-col md:flex-row gap-6">
+             <div className="bg-[#18181b] m-1 rounded border border-zinc-800 p-4 lg:p-6 flex flex-col md:flex-row gap-8">
                  
                  {/* Drum Selector */}
                  <div className="w-full md:w-24 flex md:flex-col gap-2 border-b md:border-b-0 md:border-r border-zinc-800 pb-4 md:pb-0 md:pr-4">
                      <button 
                         onClick={() => setActiveDrumIndex(0)}
-                        className={`flex-1 py-4 rounded text-xs font-black uppercase tracking-widest writing-mode-vertical transition-all ${activeDrumIndex === 0 ? 'bg-orange-900/50 text-orange-200 border border-orange-700/50 shadow-[inset_0_0_10px_rgba(249,115,22,0.2)]' : 'bg-zinc-900 text-zinc-600 border border-zinc-800'}`}
+                        className={`flex-1 py-6 rounded text-xs font-black uppercase tracking-widest writing-mode-vertical transition-all ${activeDrumIndex === 0 ? 'bg-orange-900/50 text-orange-200 border border-orange-700/50 shadow-[inset_0_0_10px_rgba(249,115,22,0.2)]' : 'bg-zinc-900 text-zinc-600 border border-zinc-800'}`}
                      >
                         Drum I
                      </button>
                      <button 
                         onClick={() => setActiveDrumIndex(1)}
-                        className={`flex-1 py-4 rounded text-xs font-black uppercase tracking-widest transition-all ${activeDrumIndex === 1 ? 'bg-yellow-900/50 text-yellow-200 border border-yellow-700/50 shadow-[inset_0_0_10px_rgba(234,179,8,0.2)]' : 'bg-zinc-900 text-zinc-600 border border-zinc-800'}`}
+                        className={`flex-1 py-6 rounded text-xs font-black uppercase tracking-widest transition-all ${activeDrumIndex === 1 ? 'bg-yellow-900/50 text-yellow-200 border border-yellow-700/50 shadow-[inset_0_0_10px_rgba(234,179,8,0.2)]' : 'bg-zinc-900 text-zinc-600 border border-zinc-800'}`}
                      >
                         Drum II
                      </button>
@@ -527,7 +522,7 @@ const App: React.FC = () => {
       
       {/* Footer */}
       <div className="mt-8 text-zinc-600 text-xs font-mono">
-          ACIDGEN v3.2 | AUDIO ENGINE: {audioEngine ? 'ONLINE' : 'OFFLINE'}
+          ACIDGEN v3.3 | AUDIO ENGINE: {audioEngine ? 'ONLINE' : 'OFFLINE'}
       </div>
       
       {/* Modals */}
